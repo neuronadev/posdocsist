@@ -1,0 +1,19 @@
+<% if !flash.blank? %>
+   <% flash.each do |type, msg| %>
+        <% if type == 'error' %>
+              <div class="alert alert-danger" role="alert">
+                      <span class="fw-bold"><%= msg.html_safe %></span>
+              </div>
+        <% end %>
+
+        <% if type == 'success' %>
+              <div class="alert alert-success" role="alert">
+                      <span class="fw-bold"><%= msg.html_safe %></span>
+              </div>
+        <% end %>
+   <% end %>
+  
+   <%
+       flash.discard
+   %>
+<% end %>

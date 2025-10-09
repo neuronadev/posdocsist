@@ -1,0 +1,2 @@
+class Red < ApplicationRecord
+end

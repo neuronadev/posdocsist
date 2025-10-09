@@ -1,0 +1,26 @@
+<table class="table">
+   <thead>
+    <tr>
+      <th scope="col">CVU</th>
+      <th scope="col">Nombre</th>
+       <th scope="col">Título proyecto</th>
+      <th scope="col">Fecha inicio</th>
+      <th scope="col">Fecha termino</th>
+      <th scope="col">Estado</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+     <% @estancias.each do |estancia|%>
+          <tr>
+            <td><%= estancia.externo.cvu %></td>
+            <td><%= nombre_com estancia.externo.persona %></td>
+            <td><%= estancia.titulo %></td>
+            <td><%= estancia.finicio.strftime("%d-%m-%Y") %></td>
+            <td><%= estancia.ftermino.strftime("%d-%m-%Y") %></td>
+            <td><%= render "estado/estado_estancia", estancia: estancia %></td>
+            <td><%= render "nav/resp_est_opc", estancia: estancia %></td>
+          </tr>  
+     <% end %>
+  </tbody>  
+</table>  

@@ -1,0 +1,2 @@
+class Tipoestancia < ApplicationRecord
+end

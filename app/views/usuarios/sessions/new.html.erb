@@ -1,0 +1,66 @@
+<div class="hero"> 
+  <div class="container">     
+    <div class="hero-content"> 
+      <div class="row"> 
+        <div class="col-12"> 
+          <h2>Sistema de Estancias Posdoctorales</h2>
+        </div>  
+        
+       
+      </div> 
+    </div>
+  </div> 
+</div>
+<section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-sm-center h-100">
+				<div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+					<div class="text-center my-5">
+						<%= image_tag("logo_5.png"); %>
+					</div>
+					<div class="card shadow-lg">
+						<div class="card-body p-5">
+							<h1 class="fs-4 card-title fw-bold mb-4">Acceso de usuario</h1>
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class:"lneeds-validation" } )  do |f| %>
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="email">E-Mail</label>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"Ingrese su correo electrónico" %>
+									<div class="invalid-feedback">
+										Email is invalid
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<div class="mb-2 w-100">
+										<label class="text-muted" for="password">Password</label>
+									</div>
+                    <%= f.password_field :password, class:"form-control", placeholder:"Ingrese su contraseña" %>
+								    <div class="invalid-feedback">
+								    	Password is required
+							    	</div>
+								</div>
+
+								<div class="d-flex align-items-center">
+									<div class="form-check">
+										<input type="checkbox" name="remember" id="remember" class="form-check-input">
+										<label for="remember" class="form-check-label">Remember Me</label>
+									</div>
+									<button type="submit" class="btn btn-primary ms-auto">
+										Ingresar
+									</button>
+								</div>
+							<% end %>
+						</div>
+						<div class="card-footer py-3 border-0">
+							<div class="text-center">
+								
+							</div>
+						</div>
+					</div>
+					<div class="text-center mt-5 text-muted">
+						Copyright &copy; 2025 &mdash; Instituto de Ecología A.C.
+					</div>
+				</div>
+			</div>
+		</div>
+</section>

@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  persona: one
+  usuario: one
+  nivel: one
+
+two:
+  persona: two
+  usuario: two
+  nivel: two
