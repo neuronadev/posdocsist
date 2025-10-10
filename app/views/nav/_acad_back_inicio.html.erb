@@ -1,19 +1,48 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
         <li class="nav-item">
-             <%= link_to academicos_path, class:"text-primary", style:"text-decoration: none;" do %> 
-                  <i class="bi bi-arrow-left" style="font-size: 1.3rem;"></i> Regresar
+             <%= link_to estancias_path, class:"nav-link", style:"text-decoration: none;" do %> 
+                  <i class="bi bi-arrow-left" style="font-size: 1rem;"></i>
              <% end %>  
         </li>
-        
+       
+        <% if @estancia.estado == 'C' %>
+          <li class="nav-item">
+              <%= link_to edit_estancia_path(@estancia.id), class:"nav-link", style:"text-decoration: none;" do %> 
+                    <i class="bi bi-pencil-square" style="font-size: 1rem;"></i> Editar
+              <% end %>  
+          </li>
+        <% end %>
+
+         <% if @estancia.estado == 'V' %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-window-dock" style="font-size: 1rem;"></i> Finalizar
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                  <%= link_to new_finalizado_path(:est_id=>@estancia.id, :tipo=>'FP'), data: { turbo_frame: "proc_finalizado" }, class:"dropdown-item", style:"text-decoration: none;" do %> 
+                    <i class="bi bi-clipboard-x" style="font-size: 1rem;"></i> Parcialmente
+                  <% end %>  
+              </li>
+              <li>
+                  <%= link_to new_finalizado_path(:est_id=>@estancia.id, :tipo=>'FC'), data: { turbo_frame: "proc_finalizado" }, class:"dropdown-item", style:"text-decoration: none;" do %> 
+                    <i class="bi bi-clipboard-check" style="font-size: 1rem;"></i> Completado
+                  <% end %> 
+              </li>
+
+            </ul>
+          </li>
+        <% end %> 
+
       </ul>
-      
     </div>
   </div>
 </nav>

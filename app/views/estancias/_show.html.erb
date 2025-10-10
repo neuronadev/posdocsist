@@ -1,5 +1,8 @@
 <%= render 'flash/mess' %> 
  
+
+
+
 <div class="row p-3">
     <div class="col-4">
        <div class="fw-bold">Número de CVU:</div>
@@ -49,7 +52,7 @@
        <div class="fw-bold">Convenio firmado:</div>
        <div class="ms-2">
            <% if  @estancia.conveniofirm.attached?  %> 
-                <%= link_to "Ver archivo", rails_blob_path( @persona.estancia.conveniofirm, disposition: "attachment") %>  
+                <%= link_to "Ver archivo", rails_blob_path( @estancia.conveniofirm, disposition: "attachment") %>  
            <% end %>
        </div>
     </div>
@@ -60,7 +63,7 @@
        <div class="fw-bold">Carta de aceptación:</div>
        <div class="ms-2">
          <% if  @estancia.cartaacepta.attached?  %> 
-                <%= link_to "Ver archivo", rails_blob_path( @persona.estancia.cartaacepta, disposition: "attachment") %>  
+                <%= link_to "Ver archivo", rails_blob_path( @estancia.cartaacepta, disposition: "attachment") %>  
          <% end %>
        </div>
     </div>

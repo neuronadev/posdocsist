@@ -1,0 +1,59 @@
+<table class="table mt-5">
+   <thead>
+    <tr>
+      <th scope="col">CVU</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Responsable</th>
+      <th scope="col">Red</th>
+      <th scope="col">Fecha inicio</th>
+      <th scope="col">Fecha termino</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+     <% @estancias.each do |estancia|
+          persona_resp = Persona.find(estancia.responsable)
+          
+     %>
+          <tr>
+            <td><%= estancia.externo.cvu %></td>
+            <td><%= nombre_com estancia.externo.persona  %></td>
+            <td><%= nombre_com persona_resp %></td>
+            <td><%= persona_resp.red.nomred %></td>
+            <td><%= estancia.finicio.strftime("%d-%m-%Y") %></td>
+            <td><%= estancia.ftermino.strftime("%d-%m-%Y") %></td>
+            <td>
+               <% if estancia.estado == 'V' %>
+                     <span class="badge bg-success">Validado</span>
+               <% end %>
+               <% if estancia.estado == 'C' %>
+                     <span class="badge bg-warning ">Solicitud</span>
+               <% end %>
+               <% if estancia.estado == 'N' %>
+                     <span class="badge bg-danger ">Rechazado</span>
+               <% end %>
+               <% if estancia.estado == 'FP' %>
+                     <span class="badge bg-primary">Concluida-P</span>
+                <% end %>     
+                <% if estancia.estado == 'FC' %>
+                    <span class="badge bg-primary">Concluida</span>
+                <% end %>    
+               <% if estancia.estado == 'R' %>
+                      <% if !estancia.solicitudes.blank?  %>
+                           <% if estancia.solicitudes.where(estado: 'A').count > 0  %>   
+                                <span class="badge bg-warning ">Solicitud</span>
+                           <% else %>
+                                  <span class="badge bg-info text-dark">Nuevo</span>
+                           <% end %>
+                     <% else %>
+                            <span class="badge bg-info text-dark">Nuevo</span>
+                      <% end %>
+               <% end %>
+            </td>
+            <td>  <%= link_to "Ver", estancia_path(estancia.id), data: { turbo_frame: "pages_item" }  %> </td>
+          </tr>  
+     <% end %>
+  </tbody>  
+</table>     
+

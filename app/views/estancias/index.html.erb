@@ -1,5 +1,7 @@
-<div class="col-12">
-            <%= render 'nav/academico' %>
-</div> 
+<%= turbo_frame_tag 'pages_item' do %>
+    <div class="col-12">
+                <%= render 'nav/academico' %>
+    </div> 
 
-<%= render "index" %>
+    <%= render "index" %>
+<% end %>    

@@ -5,24 +5,24 @@
     <%= f.fields_for :externo do |fext| %> 
         <div class="row">
             <div class="col-md-4">
-                 <%= fext.label :cvu, "Número de registro de CVU:", class:"form-label fw-bold" %>
+                 <%= fext.label :cvu, "*Número de registro de CVU:", class:"form-label fw-bold" %>
                  <%= fext.text_field :cvu, class:"form-control" %>
             </div> 
         </div>  
     <% end %>
 
     <div class="col-md-4">
-        <%= f.label :nombre, "Nombre:", class:"form-label fw-bold" %>
+        <%= f.label :nombre, "*Nombre:", class:"form-label fw-bold" %>
         <%= f.text_field :nombre, class:"form-control" %>
     </div>
 
     <div class="col-md-4">
-        <%= f.label :apaterno, "A. Paterno:", class:"form-label fw-bold" %>
+        <%= f.label :apaterno, "*A. Paterno:", class:"form-label fw-bold" %>
         <%= f.text_field :apaterno, class:"form-control" %>
     </div>
     
     <div class="col-md-4">
-        <%= f.label :amaterno, "A. Materno:", class:"form-label fw-bold" %>
+        <%= f.label :amaterno, "*A. Materno:", class:"form-label fw-bold" %>
         <%= f.text_field :amaterno, class:"form-control" %>
     </div>
 
@@ -32,23 +32,23 @@
                 <%= fest.hidden_field :tipoestancia_id, value: @tipoestancia %>
 
                 <div class="col-md-8">
-                    <%= fest.label :titulo, "Título del proyecto:", class:"form-label fw-bold" %>
+                    <%= fest.label :titulo, "*Título del proyecto:", class:"form-label fw-bold" %>
                     <%= fest.text_field :titulo, class:"form-control" %>
                 </div>
                 <div class="col-md-2">
-                        <%= fest.label :finicio, "Fecha de inicio:", class:"form-label fw-bold" %>
+                        <%= fest.label :finicio, "*Fecha de inicio:", class:"form-label fw-bold" %>
                         <%= fest.date_field :finicio, class:"form-control" %>
                 </div> 
                 <div class="col-md-2">
-                        <%= fest.label :ftermino, "Fecha de termino:", class:"form-label fw-bold" %>
+                        <%= fest.label :ftermino, "*Fecha de termino:", class:"form-label fw-bold" %>
                         <%= fest.date_field :ftermino, class:"form-control" %>
                 </div> 
                 <div class="col-md-8">
-                        <%= fest.label :tematica, "Temática:", class:"form-label fw-bold" %>
+                        <%= fest.label :tematica, "*Temática:", class:"form-label fw-bold" %>
                         <%= fest.text_field :tematica, class:"form-control" %>
                 </div> 
                 <div class="col-md-4">
-                        <%= fest.label :modalidad_id, "Modalidad:", class:"form-label fw-bold" %>
+                        <%= fest.label :modalidad_id, "*Modalidad:", class:"form-label fw-bold" %>
                         <%= fest.select :modalidad_id, options_for_select(Modalidad.all.map { |item| [item.nommodal, item.id] }), {}, { class: 'form-control' } %>
                 </div> 
                 <div class="col-md-4">
@@ -56,11 +56,11 @@
                         <%= fest.text_area :notas, class:"form-control" %>
                 </div> 
                 <div class="col-md-4">
-                        <%= fest.label :conveniofirm, "Convenio firmado:", class:"form-label fw-bold" %>
+                        <%= fest.label :conveniofirm, "*Convenio de confidencialidad firmado:", class:"form-label fw-bold" %>
                         <%= fest.file_field :conveniofirm, class:"form-control" %>
                 </div>   
                 <div class="col-md-4">
-                        <%= fest.label :cartaacepta, "Carta de aceptación:", class:"form-label fw-bold" %>
+                        <%= fest.label :cartaacepta, "*Carta de aceptación SECIHTI:", class:"form-label fw-bold" %>
                         <%= fest.file_field :cartaacepta, class:"form-control" %>
                 </div> 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_10_09_210759) do
+ActiveRecord::Schema[7.1].define(version: 2025_10_10_062728) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,16 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_09_210759) do
     t.index ["nivel_id"], name: "index_accesos_on_nivel_id"
     t.index ["persona_id"], name: "index_accesos_on_persona_id"
     t.index ["usuario_id"], name: "index_accesos_on_usuario_id"
+  end
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -86,6 +96,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_09_210759) do
     t.index ["persona_id"], name: "index_externos_on_persona_id"
   end
 
+  create_table "finalizados", force: :cascade do |t|
+    t.bigint "estancia_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["estancia_id"], name: "index_finalizados_on_estancia_id"
+  end
+
   create_table "modalidades", force: :cascade do |t|
     t.string "nommodal", limit: 100
     t.string "clave", limit: 3
@@ -118,6 +135,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_09_210759) do
     t.string "tipored", limit: 4
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "solicitudes", force: :cascade do |t|
+    t.bigint "estancia_id", null: false
+    t.integer "validador"
+    t.string "estado", limit: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["estancia_id"], name: "index_solicitudes_on_estancia_id"
   end
 
   create_table "tipoestancias", force: :cascade do |t|
@@ -156,6 +182,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_09_210759) do
   add_foreign_key "externoestancias", "estancias"
   add_foreign_key "externoestancias", "externos"
   add_foreign_key "externos", "personas"
+  add_foreign_key "finalizados", "estancias"
   add_foreign_key "personas", "redes"
   add_foreign_key "personas", "tipopersonas"
+  add_foreign_key "solicitudes", "estancias"
 end

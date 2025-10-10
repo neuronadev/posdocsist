@@ -1,0 +1,33 @@
+<%= turbo_frame_tag 'proc_finalizado' do %>
+   <div class="container border p-5 mt-2">
+        <h5>Finalizar estancia</h5>
+
+        <%= form_with model: @finalizado, data: { turbo: false }, class:'w-100 row g-3' do |f|  %>
+             <%= f.hidden_field :estancia_id, value: @estancia.id %>
+             <input type="hidden" name="tipo" value="<%= @tipo %>">
+
+             <div class="col-md-8">
+                    <%= f.label :reporte, "Reporte:", class:"form-label" %>
+                     <%= f.file_field :reporte, class:"form-control" %>
+             </div>  
+             <div class="col-md-12">
+                  <%= f.label :comtxtfinalntario, "Comentarios:", class:"form-label" %>
+                   <%= f.rich_text_area :txtfinal, class:"form-control" %>
+             </div>
+             <div class="row mt-5">
+                <div class="col text-end">
+                        <%= link_to estancias_path, "target": "_top", class:"btn btn-secondary" do %> 
+                            Cancelar
+                        <% end %>
+                </div>    
+
+                <div class="col text-start">
+                    <div class="ms-2">
+                        <%= f.submit "Aceptar", data: { turbo_frame: "proc_finalizado" }, class:"btn btn-primary"  %> 
+                    </div>
+                </div>
+             </div> 
+        <% end %>     
+
+    </div>
+<% end %>

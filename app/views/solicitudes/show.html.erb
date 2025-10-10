@@ -1,0 +1,13 @@
+<%= turbo_frame_tag 'proc_solicitud' do %>
+<div class="alert alert-warning" role="alert">
+     <div class="row mt-2"> 
+        <div class="col-12 fw-bold"> 
+             Se ha enviado la solicitud al investigador responsable.
+        </div>
+        <div class="col-12 fw-bold ms-2"> 
+            <%= @solicitud.comentario %>
+        </div>
+     </div>
+     
+  </div>
+<% end %>

@@ -1,26 +1,26 @@
 <div class="fw-light">
-<% if estancia.estado == 'R' %>
-      En validación
-<% end %>     
+      <% if estancia.estado == 'R' %>
+            <span class="badge bg-secondary">En validación</span>
+      <% end %>     
 
-<% if estancia.estado == 'C' %>
-      Corregir
-<% end %>     
+      <% if estancia.estado == 'C' %>
+            <span class="badge bg-warning text-dark">Corregir</span>
+      <% end %>     
 
-<% if estancia.estado == 'V' %>
-      Validado
-<% end %>     
+      <% if estancia.estado == 'V' %>
+            <span class="badge bg-success">Validado</span>
+      <% end %>     
 
-<% if estancia.estado == 'FP' %>
-      Concluida-P
-<% end %>     
+      <% if estancia.estado == 'FP' %>
+            <span class="badge bg-primary">Concluida-P</span>
+      <% end %>     
 
-<% if estancia.estado == 'FC' %>
-      Concluida
-<% end %>     
+      <% if estancia.estado == 'FC' %>
+            <span class="badge bg-primary">Concluida</span>
+      <% end %>     
 
-<% if estancia.estado == 'N' %>
-      Rechazada
-<% end %>     
+      <% if estancia.estado == 'N' %>
+            <span class="badge bg-danger">Rechazada</span>
+      <% end %>     
 
 </div>

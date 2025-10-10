@@ -1,3 +1,13 @@
 <%= turbo_frame_tag 'pages_item' do %>
-    <%= render "new" %>
+  <div class="container">
+     <div class="row"> 
+        <div class="col p-2">
+            <h4>Registro nuevo</h4>
+        </div>
+     </div> 
+ 
+     <div class="row"> 
+          <%= render "new" %>
+     </div>     
+  </div>   
 <% end %>    

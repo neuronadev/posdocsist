@@ -1,0 +1,25 @@
+<%= turbo_frame_tag 'proc_finalizado' do %>
+    <div class="container">
+
+       <div class="row mt-3">
+        <div class="col-12"><h5>Estancia finalizada</h5></div>
+      </div>       
+      <div class="row">
+        <div class="col-4">
+            <div class="fw-bold">Reporte:</div>
+              <div class="ms-2">
+                    <% if  @estancia.finalizado.reporte.attached?  %> 
+                            <%= link_to "Ver archivo", rails_blob_path( @estancia.finalizado.reporte, disposition: "attachment") %>  
+                    <% end %>
+              </div>
+        </div> 
+        <div class="col-12">
+            <div class="fw-bold">Comentarios:</div>
+              <div class="ms-2">
+                    <%= @estancia.finalizado.txtfinal %>  
+              </div>
+        </div> 
+      </div>
+
+    </div>
+<% end %>    

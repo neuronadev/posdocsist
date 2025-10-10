@@ -1,11 +1,23 @@
 Rails.application.routes.draw do
-  
-  
+     
   get 'paginas/index'
   devise_for :usuarios
 
   resources :estancias
   resources :personas
+  resources :validaciones do
+        collection do
+             post "validar"
+        end
+  end
+  
+  resources :solicitudes do
+        collection do
+             post "atendida"
+        end
+  end
+
+  resources :finalizados
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

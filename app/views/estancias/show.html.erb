@@ -1,3 +1,61 @@
  <%= turbo_frame_tag 'pages_item' do %>
-     <%= render "show" %>
+     <% if current_usuario.acceso.nivel.clave == 'R' %>
+           <%= render "nav/acad_back_inicio" %>
+     <% end %>
+
+     <% if current_usuario.acceso.nivel.clave == 'V' %>
+           <%= render "nav/validar" %>
+
+           <%= turbo_frame_tag 'proc_solicitud' do %>
+                   
+           <% end %>               
+ 
+     <% end %>
+
+     <% if @estancia.estado == 'V' %>
+            <div class="alert alert-success" role="alert">
+               Registro validado.
+            </div>
+      <% end %>
+
+      <% if @estancia.estado == 'C' %>
+            <% @estancia.solicitudes.where(estado: 'A').each do |sol| %> 
+                  <div class="alert alert-warning" role="alert">
+                        <%= sol.comentario %>
+                  </div>
+            <% end %>
+
+      <% end %>
+
+      <% if current_usuario.acceso.nivel.clave == 'V' %>
+            <% if @estancia.estado == 'R' %>
+                  <% @estancia.solicitudes.where(estado: 'A').each do |sol| %> 
+                        <div class="alert alert-warning" role="alert">
+                              <div class="col-12 text-primary d-flex justify-content-end">
+                                    <i class="bi bi-check-square" style="font-color: blue"></i>
+                                    <span class="ms-1" style="cursor: pointer;" data-controller="solicitud" data-action="click->solicitud#atendida" data-solicitud-idsol-param="<%= sol.id %>">
+                                          Cerrar solicitudd
+                                    </span>
+                              </div>
+                              <div class="col-12"> 
+                              <%= sol.comentario %>
+                              </div>   
+                        </div>
+                  <% end %>
+            <% end %>
+      <% end %>
+      
+        <%= render "show" %>
+
+
+      <% if @estancia.estado == 'FP' || @estancia.estado == 'FC' %>
+            <%= turbo_frame_tag 'proc_finalizado', src: finalizado_path(:est_id=>@estancia.id) do %>
+            <% end %>
+      <% else %>      
+            <%= turbo_frame_tag 'proc_finalizado' do %>
+            <% end %>
+      <% end %> 
+           
+
+
 <% end %>     
