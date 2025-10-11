@@ -6,7 +6,8 @@ class Persona < ApplicationRecord
 
   accepts_nested_attributes_for :externo, allow_destroy: true, reject_if: :all_blank
 
-  validates :nombre, presence: true
-  validates :apaterno, presence: true
-  validates :amaterno, presence: true 
+  validates :nombre, presence: {message: "Se requiere el nombre."}
+  validates :apaterno, presence: {message: "Se requiere el primer apellido."}
+  validates :amaterno, presence: {message: "Se requiere el segundo apellido."}
+
 end

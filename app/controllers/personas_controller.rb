@@ -7,8 +7,12 @@ class PersonasController < ApplicationController
               format.html { redirect_to estancia_path(@persona.externo.estancias.first.id) } 
           else
               flash[:error] = 'Falta información, favor de revisar los campos marcados en rojo.'
-              #@estan_nueva = Tipoestancia.where(clave:'NV').first.id
-              format.html { render :new, status: :bad_request }
+
+              @tipopersona = @persona.tipopersona_id
+              @tipoestancia = @persona.externo.estancias.first.tipoestancia_id
+              @respinv = @persona.externo.estancias.first.responsable
+
+              format.html { render new_estancia_path, status: :bad_request  }
           end
        end
   end
@@ -21,8 +25,13 @@ class PersonasController < ApplicationController
               format.html { redirect_to estancia_path(@persona.externo.estancias.first.id) } 
           else
               flash[:error] = 'Falta información, favor de revisar los campos marcados en rojo.'
-              #@estan_nueva = Tipoestancia.where(clave:'NV').first.id
-              format.html { render :edit, status: :bad_request }
+              puts '-------------------------------------------------Errors' 
+              puts @persona.errors.full_messages
+              @tipopersona = @persona.tipopersona_id
+              @tipoestancia = @persona.externo.estancias.first.tipoestancia_id
+              @respinv = @persona.externo.estancias.first.responsable
+              format.html { render 'estancias/edit' }
+              #format.html { render edit_estancia_path(@persona.externo.estancias.first.id), status: :bad_request, locals: {persona: @persona} }
           end
       end  
   end

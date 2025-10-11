@@ -12,6 +12,8 @@ class EstanciasController < ApplicationController
       @estancia_p = Estancia.find(params[:id])
       @persona = Persona.find(@estancia_p.externo.persona.id)
   end
+
+  
   
   def new
       @persona = Persona.new

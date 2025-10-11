@@ -5,3 +5,8 @@
 .field_with_errors{
     color: red;
 }
+
+.msg_errors{
+    color: red;
+    font-size: 12px;
+}

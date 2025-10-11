@@ -1,8 +1,5 @@
 <%= render 'flash/mess' %> 
  
-
-
-
 <div class="row p-3">
     <div class="col-4">
        <div class="fw-bold">Número de CVU:</div>
@@ -67,4 +64,19 @@
          <% end %>
        </div>
     </div>
+
+    <div class="col-4">
+       <div class="fw-bold">Académico responsable:</div>
+       <div class="ms-2">
+         <%= nombre_com  Persona.find(@estancia.responsable) %> 
+       </div>
+    </div>
+  
+    <div class="col-4">
+       <div class="fw-bold">Red académica:</div>
+       <div class="ms-2">
+         <%= Persona.find(@estancia.responsable).red.nomred %> 
+       </div>
+    </div>
+
  </div>

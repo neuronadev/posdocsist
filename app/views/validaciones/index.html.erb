@@ -1,3 +1,14 @@
 <%= turbo_frame_tag 'pages_item' do %>
-     <%= render "index" %>
+    <div class="container">
+     <div class="row"> 
+        <div class="col p-2">
+            <h5>Estancias posdoctorales registradas</h5>
+            <hr>
+        </div>
+     </div> 
+ 
+     <div class="row"> 
+          <%= render "validaciones/index" %>
+     </div>     
+  </div>   
 <% end %>

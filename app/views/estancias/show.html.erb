@@ -1,5 +1,7 @@
  <%= turbo_frame_tag 'pages_item' do %>
-     <% if current_usuario.acceso.nivel.clave == 'R' %>
+  <div class="container">
+      <div class="row"> 
+            <% if current_usuario.acceso.nivel.clave == 'R' %>
            <%= render "nav/acad_back_inicio" %>
      <% end %>
 
@@ -44,6 +46,13 @@
                   <% end %>
             <% end %>
       <% end %>
+
+      <div class="row"> 
+            <div class="col p-2">
+                  <h5>Información de la estancia posdoctoral.</h5>
+                  <hr>
+            </div>
+      </div>  
       
         <%= render "show" %>
 
@@ -55,7 +64,7 @@
             <%= turbo_frame_tag 'proc_finalizado' do %>
             <% end %>
       <% end %> 
-           
-
+      </div>     
+  </div>   
 
 <% end %>     

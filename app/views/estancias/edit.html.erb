@@ -1,87 +1,16 @@
+
 <%= turbo_frame_tag 'pages_item' do %>
-   
-    <%= form_with model: @persona, data: { turbo: false }, class:'w-100 row g-3' do |f|  %>
-        <%= f.hidden_field :tipopersona_id %>
-        <%= f.hidden_field :red_id %> 
-
-        <%= f.fields_for :externo do |fext| %> 
-            <div class="row">
-            <div class="col-md-4">
-                <%= fext.label :cvu, "Número de registro de CVU:", class:"form-label fw-bold" %>
-                <%= fext.text_field :cvu, class:"form-control" %>
-            </div> 
-            </div>  
-        <% end %>
-        <div class="col-md-4">
-            <%= f.label :nombre, "Nombre:", class:"form-label fw-bold" %>
-            <%= f.text_field :nombre, class:"form-control" %>
+  
+  <div class="container">
+     <div class="row"> 
+        <div class="col p-2">
+            <h5>Modificar información</h5>
+            <hr>
         </div>
-        <div class="col-md-4">
-            <%= f.label :apaterno, "A. Paterno:", class:"form-label fw-bold" %>
-            <%= f.text_field :apaterno, class:"form-control" %>
-        </div>
-        
-        <div class="col-md-4">
-            <%= f.label :amaterno, "A. Materno:", class:"form-label fw-bold" %>
-            <%= f.text_field :amaterno, class:"form-control" %>
-        </div>
-
-        <%= f.fields_for :externo do |fext| %>  
-            <%= fext.fields_for :estancias do |fest| %> 
-                    <%= fest.hidden_field :responsable %>
-                    <%= fest.hidden_field :tipoestancia_id %>
-                    <%= fest.hidden_field :estado, value:'R' %>
-
-                    <div class="col-md-8">
-                        <%= fest.label :titulo, "Título del proyecto:", class:"form-label fw-bold" %>
-                        <%= fest.text_field :titulo, class:"form-control" %>
-                    </div>
-                    <div class="col-md-2">
-                            <%= fest.label :finicio, "Fecha de inicio:", class:"form-label fw-bold" %>
-                            <%= fest.date_field :finicio, class:"form-control" %>
-                    </div> 
-                    <div class="col-md-2">
-                            <%= fest.label :ftermino, "Fecha de termino:", class:"form-label fw-bold" %>
-                            <%= fest.date_field :ftermino, class:"form-control" %>
-                    </div> 
-                    <div class="col-md-8">
-                            <%= fest.label :tematica, "Temática:", class:"form-label fw-bold" %>
-                            <%= fest.text_field :tematica, class:"form-control" %>
-                    </div> 
-                    <div class="col-md-4">
-                            <%= fest.label :modalidad_id, "Modalidad:", class:"form-label fw-bold" %>
-                            <%= fest.select :modalidad_id, options_for_select(Modalidad.all.map { |item| [item.nommodal, item.id] }), {}, { class: 'form-control' } %>
-                    </div> 
-                    <div class="col-md-4">
-                            <%= fest.label :notas, "Notas:", class:"form-label fw-bold" %>
-                            <%= fest.text_area :notas, class:"form-control" %>
-                    </div> 
-                    <div class="col-md-4">
-                            <%= fest.label :conveniofirm, "Convenio firmado:", class:"form-label fw-bold" %>
-                            <%= fest.file_field :conveniofirm, class:"form-control" %>
-                    </div>   
-                    <div class="col-md-4">
-                            <%= fest.label :cartaacepta, "Carta de aceptación:", class:"form-label fw-bold" %>
-                            <%= fest.file_field :cartaacepta, class:"form-control" %>
-                    </div> 
-
-                <% end %>  
-        <% end %>
-
-        <div class="row mt-5">
-          <div class="col text-end">
-                <%= link_to estancias_path, class:"btn btn-secondary" do %> 
-                    Cancelar
-                <% end %>
-          </div>    
-
-          <div class="col text-start">
-             <div class="ms-2">
-                  <%= f.submit "Actualizar", data: { turbo_frame: "pages_item" }, class:"btn btn-primary"  %> 
-             </div>
-          </div>
-    </div> 
-    <% end %>
-
-
-<% end %>    
+     </div> 
+ 
+     <div class="row"> 
+          <%= render "estancias/edit" %>
+     </div>     
+  </div>   
+<% end %>
