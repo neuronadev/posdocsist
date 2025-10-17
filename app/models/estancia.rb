@@ -10,15 +10,18 @@ class Estancia < ApplicationRecord
   has_many :solicitudes
   has_one :finalizado
 
-  has_one_attached :conveniofirm
-  has_one_attached :cartaacepta
+  has_one_attached :convenio_c
+  has_one_attached :convenio_i
+  has_one_attached :proyecto_c
+
 
   validates :titulo, presence: {message: "Ingrese el titulo del proyecto que el posdoctor va a relaizar."}
   validates :finicio, presence: {message: "Ingrese la fecha de incio del proyecto."}
   validates :ftermino, presence: {message: "Ingrese la fecha de termino del proyecto."}
   validates :tematica, presence: {message: "Ingrese la temática del proyecto."}
-  validates :conveniofirm, presence: {message: "Se requiere el convenio en formato PDF."}
-  validates :cartaacepta, presence: {message: "Se requiere la carta de aceptación en formato PDF."}
+  validates :convenio_c, presence: {message: "Se requiere el convenio expedido por la SECIHTI en formato PDF."}
+  validates :convenio_i, presence: {message: "Se requiere el convenio de confidencialdiad en formato PDF."}
+  validates :proyecto_c, presence: {message: "Se requiere el proyecto presentado en formato PDF."}
   
   validate :ftermino_menor_igual
 

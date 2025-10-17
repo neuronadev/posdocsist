@@ -1,4 +1,4 @@
- <%= form_with model: @persona, data: { turbo: false }, class:'w-100 row g-3' do |f|  %>
+ <%= form_with model: @persona, data: { turbo: false, controller:'toolmsg' }, class:'w-100 row g-3' do |f|  %>
 
   <%= render 'flash/mess' %>  
 
@@ -7,31 +7,31 @@
 
     <%= f.fields_for :externo do |fext| %> 
         <div class="row">
-            <div class="col-md-4">
-                 <%= fext.label :cvu, "*Número de registro de CVU:", class:"form-label fw-bold" %>
+
+            <div class="col-md-3">
+                 <%= fext.label :cvu, "Número de registro de CVU:", class:"form-label fw-bold required-label" %>
                  <%= fext.text_field :cvu, class:"form-control" %>
                  <%= "<div class='msg_errors'>#{@persona.externo.errors[:cvu][0]}</div>".html_safe if !@persona.externo.errors[:cvu].blank? %>
             </div> 
+            <div class="col-md-3">
+                <%= f.label :nombre, "Nombre:", class:"form-label fw-bold required-label" %>
+                <%= f.text_field :nombre, class:"form-control" %>
+                <%= "<div class='msg_errors'>#{@persona.errors[:nombre][0]}</div>".html_safe if !@persona.errors[:nombre].blank? %>
+            </div>
+            <div class="col-md-3">
+                <%= f.label :apaterno, "A. Paterno:", class:"form-label fw-bold required-label" %>
+                <%= f.text_field :apaterno, class:"form-control" %>
+                <%= "<div class='msg_errors'>#{@persona.errors[:apaterno][0]}</div>".html_safe if !@persona.errors[:apaterno].blank? %>
+            </div>
+            <div class="col-md-3">
+                <%= f.label :amaterno, "A. Materno:", class:"form-label fw-bold required-label" %>
+                <%= f.text_field :amaterno, class:"form-control" %>
+                <%= "<div class='msg_errors'>#{@persona.errors[:amaterno][0]}</div>".html_safe if !@persona.errors[:amaterno].blank? %>
+            </div>
+
         </div>  
     <% end %>
 
-    <div class="col-md-4">
-        <%= f.label :nombre, "*Nombre:", class:"form-label fw-bold" %>
-        <%= f.text_field :nombre, class:"form-control" %>
-        <%= "<div class='msg_errors'>#{@persona.errors[:nombre][0]}</div>".html_safe if !@persona.errors[:nombre].blank? %>
-    </div>
-
-    <div class="col-md-4">
-        <%= f.label :apaterno, "*A. Paterno:", class:"form-label fw-bold" %>
-        <%= f.text_field :apaterno, class:"form-control" %>
-        <%= "<div class='msg_errors'>#{@persona.errors[:apaterno][0]}</div>".html_safe if !@persona.errors[:apaterno].blank? %>
-    </div>
-    
-    <div class="col-md-4">
-        <%= f.label :amaterno, "*A. Materno:", class:"form-label fw-bold" %>
-        <%= f.text_field :amaterno, class:"form-control" %>
-        <%= "<div class='msg_errors'>#{@persona.errors[:amaterno][0]}</div>".html_safe if !@persona.errors[:amaterno].blank? %>
-    </div>
 
     <%= f.fields_for :externo do |fext| %>  
             <%= fext.fields_for :estancias do |fest| %> 
@@ -39,42 +39,49 @@
                 <%= fest.hidden_field :tipoestancia_id, value: @tipoestancia %>
 
                 <div class="col-md-8">
-                    <%= fest.label :titulo, "*Título del proyecto:", class:"form-label fw-bold" %>
+                    <%= fest.label :titulo, "Título del proyecto:", class:"form-label fw-bold required-label" %>
                     <%= fest.text_field :titulo, class:"form-control" %>
                     <%= "<div class='msg_errors'>#{@persona.externo.estancias.first.errors[:titulo][0]}</div>".html_safe if !@persona.externo.estancias.first.errors[:titulo][0].blank? %>
                 </div>
                 <div class="col-md-2">
-                        <%= fest.label :finicio, "*Fecha de inicio:", class:"form-label fw-bold" %>
+                        <%= fest.label :finicio, "Fecha de inicio:", class:"form-label fw-bold required-label" %>
                         <%= fest.date_field :finicio, class:"form-control" %>
                         <%= "<div class='msg_errors'>#{@persona.externo.estancias.first.errors[:finicio][0]}</div>".html_safe if !@persona.externo.estancias.first.errors[:finicio][0].blank? %>
                 </div> 
                 <div class="col-md-2">
-                        <%= fest.label :ftermino, "*Fecha de termino:", class:"form-label fw-bold" %>
+                        <%= fest.label :ftermino, "Fecha de termino:", class:"form-label fw-bold required-label" %>
                         <%= fest.date_field :ftermino, class:"form-control" %>
                         <%= "<div class='msg_errors'>#{@persona.externo.estancias.first.errors[:ftermino][0]}</div>".html_safe if !@persona.externo.estancias.first.errors[:ftermino][0].blank? %>
                 </div> 
                 <div class="col-md-8">
-                        <%= fest.label :tematica, "*Temática:", class:"form-label fw-bold" %>
+                        <%= fest.label :tematica, "Temática:", class:"form-label fw-bold required-label" %> <%= render 'help/tematica' %>
                         <%= fest.text_field :tematica, class:"form-control" %>
                         <%= "<div class='msg_errors'>#{@persona.externo.estancias.first.errors[:tematica][0]}</div>".html_safe if !@persona.externo.estancias.first.errors[:tematica][0].blank? %>
                 </div> 
                 <div class="col-md-4">
-                        <%= fest.label :modalidad_id, "*Modalidad:", class:"form-label fw-bold" %>
+                        <%= fest.label :modalidad_id, "Modalidad:", class:"form-label fw-bold required-label" %>
                         <%= fest.select :modalidad_id, options_for_select(Modalidad.all.map { |item| [item.nommodal, item.id] }), {}, { class: 'form-control' } %>
                 </div> 
                 <div class="col-md-4">
-                        <%= fest.label :notas, "Notas:", class:"form-label fw-bold" %>
-                        <%= fest.text_area :notas, class:"form-control" %>
-                </div> 
-                <div class="col-md-4">
-                        <%= fest.label :conveniofirm, "*Convenio de confidencialidad firmado:", class:"form-label fw-bold" %>
-                        <%= fest.file_field :conveniofirm, class:"form-control" %>
-                        <%= "<div class='msg_errors'>#{@persona.externo.estancias.first.errors[:conveniofirm][0]}</div>".html_safe if !@persona.externo.estancias.first.errors[:conveniofirm][0].blank? %>
+                        <%= fest.label :convenio_c, "Convenio de asignación de beca:", class:"form-label fw-bold required-label" %> <%= render 'help/conv_c' %>
+                        <%= fest.file_field :convenio_c, class:"form-control" %>
+                        <%= "<div class='msg_errors'>#{@persona.externo.estancias.first.errors[:convenio_c][0]}</div>".html_safe if !@persona.externo.estancias.first.errors[:convenio_c][0].blank? %>
                 </div>   
                 <div class="col-md-4">
-                        <%= fest.label :cartaacepta, "*Carta de aceptación SECIHTI:", class:"form-label fw-bold" %>
-                        <%= fest.file_field :cartaacepta, class:"form-control" %>
-                        <%= "<div class='msg_errors'>#{@persona.externo.estancias.first.errors[:cartaacepta][0]}</div>".html_safe if !@persona.externo.estancias.first.errors[:cartaacepta][0].blank? %> 
+                        <%= fest.label :convenio_i, "Convenio de confidencialidad:", class:"form-label fw-bold required-label" %> <%= render 'help/conv_i' %>
+                        <%= fest.file_field :convenio_i, class:"form-control" %>
+                        <%= "<div class='msg_errors'>#{@persona.externo.estancias.first.errors[:convenio_i][0]}</div>".html_safe if !@persona.externo.estancias.first.errors[:convenio_i][0].blank? %> 
+                </div> 
+
+                <div class="col-md-4">
+                        <%= fest.label :proyecto_c, "Proyecto presentado ante la SECIHTI:", class:"form-label fw-bold required-label" %> <%= render 'help/proyecto_c' %>
+                        <%= fest.file_field :proyecto_c, class:"form-control" %>
+                        <%= "<div class='msg_errors'>#{@persona.externo.estancias.first.errors[:proyecto_c][0]}</div>".html_safe if !@persona.externo.estancias.first.errors[:proyecto_c][0].blank? %> 
+                </div> 
+
+                <div class="col-md-12">
+                        <%= fest.label :notas, "Notas:", class:"form-label fw-bold" %>
+                        <%= fest.text_area :notas, class:"form-control" %>
                 </div> 
 
             <% end %>

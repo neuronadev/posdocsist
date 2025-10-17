@@ -10,3 +10,9 @@
     color: red;
     font-size: 12px;
 }
+
+.required-label::before {
+      content: "*";
+      color: red;
+      font-weight: bold;
+}
