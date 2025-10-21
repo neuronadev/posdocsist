@@ -69,3 +69,4 @@ gem "devise", "~> 4.9"
 gem "bootstrap", "~> 5.3"
 gem "sassc-rails"
 gem 'io-console', '~> 0.7.2'
+gem 'rest-client'

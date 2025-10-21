@@ -46,24 +46,38 @@
     </div>
 
     <div class="col-4">
-       <div class="fw-bold">Convenio firmado:</div>
+       <div class="fw-bold">Convenio de asignación de beca:</div>
        <div class="ms-2">
-           <% if  @estancia.conveniofirm.attached?  %> 
-                <%= link_to "Ver archivo", rails_blob_path( @estancia.conveniofirm, disposition: "attachment") %>  
+           <% if  @estancia.convenio_c.attached?  %> 
+                <%= link_to "Ver archivo", rails_blob_path( @estancia.convenio_c, disposition: "attachment") %>  
            <% end %>
        </div>
     </div>
-</div>
-
+</div>    
 <div class="row p-3">
     <div class="col-4">
-       <div class="fw-bold">Carta de aceptación:</div>
+       <div class="fw-bold">Convenio de confidencialidad:</div>
        <div class="ms-2">
-         <% if  @estancia.cartaacepta.attached?  %> 
-                <%= link_to "Ver archivo", rails_blob_path( @estancia.cartaacepta, disposition: "attachment") %>  
+         <% if  @estancia.convenio_i.attached?  %> 
+                <%= link_to "Ver archivo", rails_blob_path( @estancia.convenio_i, disposition: "attachment") %>  
          <% end %>
        </div>
     </div>
+
+
+    <div class="col-4">
+       <div class="fw-bold">Proyecto presentado en la SECIHTI:</div>
+       <div class="ms-2">
+         <% if  @estancia.proyecto_c.attached?  %> 
+                <%= link_to "Ver archivo", rails_blob_path( @estancia.proyecto_c, disposition: "attachment") %>  
+         <% end %>
+       </div>
+    </div>
+
+</div>
+
+<div class="row p-3">
+    
 
     <div class="col-4">
        <div class="fw-bold">Académico responsable:</div>
