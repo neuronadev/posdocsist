@@ -8,6 +8,7 @@ class SolicitudesController < ApplicationController
 
   def new
       @idest = params[:idest]
+      @tipo = params[:tipo]
       @solicitud = Solicitud.new
   end
 
@@ -17,7 +18,7 @@ class SolicitudesController < ApplicationController
       respond_to do |format|
          if @solicitud.save
             estancia = Estancia.find(params[:solicitud][:estancia_id])
-            estancia.estado = 'C'
+            estancia.estado = @solicitud.tipo
             estancia.save
             format.html { redirect_to @solicitud }
          else
@@ -45,7 +46,8 @@ class SolicitudesController < ApplicationController
           :estancia_id,
           :validador,
           :estado,
-          :comentario
+          :comentario,
+          :tipo
         )
     end
 

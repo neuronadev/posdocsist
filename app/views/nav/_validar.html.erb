@@ -13,33 +13,44 @@
              <% end %>  
         </li>
 
-       <% if !@estancia.solicitudes.nil? %>   
+       <% if !@estancia.solicitudes.nil? %>
           <% if @estancia.solicitudes.where(estado: 'A').count == 0 %>   
-            <% if @estancia.estado == 'R' %> 
-              <li class="nav-item fw-bolder">
-                    <button type="button" 
-                            class="nav-link btn btn-link" 
-                            style="text-decoration: none;"
-                            data-controller="validacion"
-                            data-action="click->validacion#validar"
-                            data-validacion-idest-param = <%=  @estancia.id %>
-                            >
-                        <i class="bi bi-check2-all" style="font-size: 1rem;"></i> <span style="font-size: 0.9rem;">Validar</span>
-                    </button>
-              </li>
-            
-              <li class="nav-item fw-bolder">
-                    <button type="button" 
-                              class="nav-link btn btn-link " 
-                              style="text-decoration: none;"
-                              data-controller="validacion"
-                              data-action="click->validacion#cambio"
-                              data-validacion-idest-param = <%=  @estancia.id %>
-                              >
-                        <i class="bi bi-pencil-square" style="font-size: 1rem;"></i> <span style="font-size: 0.9rem;">Solicitud</span> 
-                    </button>
-              </li>
-            <% end %>
+                <% if @estancia.estado == 'R' %> 
+                    <li class="nav-item fw-bolder ms-3">
+                          <button tye="button" 
+                                  class="btn btn-secondary btn-sm" 
+                                  data-controller="validacion"
+                                  data-action="click->validacion#validar"
+                                  data-validacion-idest-param = <%=  @estancia.id %>
+                                  >
+                              <i class="bi bi-check2-all" style="font-size: 0.9rem;"></i> <span style="font-size: 0.9rem;">Validar</span>
+                          </button>
+                    </li>
+                  
+                    <li class="nav-item fw-bolder ms-3">
+                          <div class="dropdown">
+                              <a class="btn btn-secondary dropdown-toggle btn-sm" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Solicitudes
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><div class="dropdown-item" 
+                                         style="cursor: pointer;"
+                                         data-controller="validacion"
+                                         data-action="click->validacion#cambio"
+                                         data-validacion-idest-param = <%=  @estancia.id %> 
+                                    >Corregir información</div>
+                                </li>
+                                <li><div class="dropdown-item" 
+                                         style="cursor: pointer;"
+                                         data-controller="validacion"
+                                         data-action="click->validacion#soldocumentos"
+                                         data-validacion-idest-param = <%=  @estancia.id %> 
+                                         >Documentos firmados</div></li>
+                              </ul>
+                          </div>
+                    </li>
+
+                <% end %>
           <% end %>
         <% end %>    
         

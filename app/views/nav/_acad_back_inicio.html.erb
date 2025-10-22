@@ -13,7 +13,7 @@
              <% end %>  
         </li>
        
-        <% if @estancia.estado == 'C' %>
+        <% if @estancia.estado == 'C' || @estancia.estado == 'P' %>
           <li class="nav-item">
               <%= link_to edit_estancia_path(@estancia.id), class:"nav-link", style:"text-decoration: none;" do %> 
                     <i class="bi bi-pencil-square" style="font-size: 1rem;"></i> Editar

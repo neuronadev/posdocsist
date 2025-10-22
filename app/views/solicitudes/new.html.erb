@@ -1,35 +1,48 @@
 <%= turbo_frame_tag 'proc_solicitud' do %>
   <div class="container" id="solcambio">
      <%= form_with model: @solicitud, data: { turbo: false }, class:'w-100 row g-3' do |f|  %>
-        
-        <%= render 'flash/mess' %> 
-    
-        <%= f.hidden_field :validador, value: current_usuario.acceso.persona.id %>
-        <%= f.hidden_field :estancia_id, value: @idest %>
+        <div class="alert alert-secondary" role="alert">
+                <%= render 'flash/mess' %> 
+            
+                <%= f.hidden_field :validador, value: current_usuario.acceso.persona.id %>
+                <%= f.hidden_field :estancia_id, value: @idest %>
+                <%= f.hidden_field :tipo, value: @tipo %>
 
-        <div class="col-md-12">
-            <%= f.label :comentario, "Solicitud:", class:"form-label fw-bold" %>
-            <%= f.rich_text_area :comentario, class:"form-control" %>
-        </div>
-
-        <div class="row mt-2">
-            <div class="col text-end">
-                    <button type="button" 
-                            class="btn btn-secondary"
-                            data-controller="validacion"
-                            data-action="click->validacion#cancelar"
-                            >
-                            Cancelar
-                    </button>
-            </div>    
-
-            <div class="col text-start">
-                <div class="ms-2">
-                    <%= f.submit "Aceptar", data: { turbo_frame: "proc_solicitud" }, class:"btn btn-primary"  %> 
+                <div class="col-md-12">
+                    <% if @tipo == 'C' %>
+                        <div class="fw-bold"> Solicitar cambios al responsable. </div>
+                    <% end %>
+                    <% if @tipo == 'P' %>
+                        <div>
+                                <div class="fw-bold">Solicitar al responsable el convenio de confidencialidad firmados</div>
+                                <div class="">A esta solicitud se anexara el documento Adhesión al código de conducta</div>
+                        </div>
+                    <% end %>
                 </div>
-            </div>
-        </div> 
-
+                <div class="col-md-12">
+                    <%= f.label :comentario, "Comentarios:", class:"form-label" %>
+                    <%= f.rich_text_area :comentario, class:"form-control" %>
+                </div>
+                
+            
+                <div class="row mt-2">
+                    <div class="col text-end">
+                            <button type="button" 
+                                    class="btn btn-secondary"
+                                    data-controller="validacion"
+                                    data-action="click->validacion#cancelar"
+                                    >
+                                    Cancelar
+                            </button>
+                    </div>    
+                
+                    <div class="col text-start">
+                        <div class="ms-2">
+                            <%= f.submit "Aceptar", data: { turbo_frame: "proc_solicitud" }, class:"btn btn-primary"  %> 
+                        </div>
+                    </div>
+                </div> 
+        </div>
      <% end %>    
   </div>  
 <% end %>    

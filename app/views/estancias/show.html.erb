@@ -20,7 +20,7 @@
             </div>
       <% end %>
 
-      <% if @estancia.estado == 'C' %>
+      <% if @estancia.estado == 'C' || @estancia.estado == 'P' %>
             <% @estancia.solicitudes.where(estado: 'A').each do |sol| %> 
                   <div class="alert alert-warning" role="alert">
                         <%= sol.comentario %>

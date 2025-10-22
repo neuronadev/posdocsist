@@ -7,9 +7,15 @@ export default class extends Controller {
 
   cambio(event){
       let frm = document.getElementById("proc_solicitud")
-      frm.src = `solicitudes/new?idest=${event.params.idest}`
+      frm.src = `solicitudes/new?idest=${event.params.idest}&tipo=C`
       frm.reload()
   }
+
+  soldocumentos(event){
+      let frm = document.getElementById("proc_solicitud")
+      frm.src = `solicitudes/new?idest=${event.params.idest}&tipo=P`
+      frm.reload()
+   }
 
   cancelar(event){
       let frm = document.getElementById("proc_solicitud")

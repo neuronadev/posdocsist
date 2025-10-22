@@ -28,8 +28,12 @@
                      <span class="badge bg-success">Validado</span>
                <% end %>
                <% if estancia.estado == 'C' %>
-                     <span class="badge bg-warning ">Solicitud</span>
+                         <span class="badge bg-warning ">Solicitud</span>
                <% end %>
+               <% if estancia.estado == 'P' %>
+                         <span class="badge bg-warning ">Documentos</span>
+               <% end %>
+
                <% if estancia.estado == 'N' %>
                      <span class="badge bg-danger ">Rechazado</span>
                <% end %>

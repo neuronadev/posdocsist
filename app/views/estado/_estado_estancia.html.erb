@@ -7,6 +7,10 @@
             <span class="badge bg-warning text-dark">Corregir</span>
       <% end %>     
 
+      <% if estancia.estado == 'P' %>
+            <span class="badge bg-warning text-dark">Subir documentos</span>
+      <% end %>   
+
       <% if estancia.estado == 'V' %>
             <span class="badge bg-success">Validado</span>
       <% end %>     
