@@ -41,5 +41,12 @@ module Util
                  ).execute
           end
 
+          def self.validado(personaid, estanciaid)
+                 response = RestClient::Request.new(
+                      :method => :post,
+                      :url => 'localhost:5000/email/validado',
+                      :payload => {persona_id: personaid, estancia_id: estanciaid}
+                 ).execute
+          end
     end   
 end

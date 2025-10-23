@@ -10,6 +10,11 @@ class ValidacionesController < ApplicationController
       estancia = Estancia.find(estancia_id)
       estancia.estado = 'V'
       estancia.save
+      
+      persona_posdoc = estancia.externo.persona_id
+      sleep 2
+      Util::Email.validado( persona_posdoc,
+                             estancia.id)
 
       item = {estancia: estancia}
 
