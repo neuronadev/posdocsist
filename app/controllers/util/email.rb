@@ -6,7 +6,7 @@ module Util
         def self.notificar(personaid, estanciaid, tipo)
                response = RestClient::Request.new(
                       :method => :post,
-                      :url => 'localhost:4000/email/enviararp',
+                      :url => 'localhost:5000/email/enviararp',
                       :payload => {persona_id: personaid, 
                                    estancia_id: estanciaid,
                                    tipo: tipo}
@@ -16,7 +16,7 @@ module Util
         def self.validador(personaid, estanciaid, tipo)
                response = RestClient::Request.new(
                       :method => :post,
-                      :url => 'localhost:4000/email/enviaraval',
+                      :url => 'localhost:5000/email/enviaraval',
                       :payload => {persona_id: personaid, 
                                    estancia_id: estanciaid,
                                    tipo: tipo}
@@ -26,7 +26,7 @@ module Util
          def self.corregir(personaid, estanciaid, comentarioid )
                  response = RestClient::Request.new(
                       :method => :post,
-                      :url => 'localhost:4000/email/enviarcorr',
+                      :url => 'localhost:5000/email/enviarcorr',
                       :payload => {persona_id: personaid, 
                                    estancia_id: estanciaid,
                                    comentario_id: comentarioid}
@@ -36,7 +36,7 @@ module Util
           def self.firmaconv(comentarioid )
                  response = RestClient::Request.new(
                       :method => :post,
-                      :url => 'localhost:4000/email/enviarfirma',
+                      :url => 'localhost:5000/email/enviarfirma',
                       :payload => {comentario_id: comentarioid}
                  ).execute
           end
