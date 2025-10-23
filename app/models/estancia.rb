@@ -13,6 +13,7 @@ class Estancia < ApplicationRecord
   has_one_attached :convenio_c
   has_one_attached :convenio_i
   has_one_attached :proyecto_c
+  has_one_attached :anexo_c
 
 
   validates :titulo, presence: {message: "Ingrese el titulo del proyecto que el posdoctor va a relaizar."}

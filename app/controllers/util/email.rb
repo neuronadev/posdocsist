@@ -21,7 +21,25 @@ module Util
                                    estancia_id: estanciaid,
                                    tipo: tipo}
                ).execute
-        end
+         end
+
+         def self.corregir(personaid, estanciaid, comentarioid )
+                 response = RestClient::Request.new(
+                      :method => :post,
+                      :url => 'localhost:4000/email/enviarcorr',
+                      :payload => {persona_id: personaid, 
+                                   estancia_id: estanciaid,
+                                   comentario_id: comentarioid}
+                 ).execute
+          end
+
+          def self.firmaconv(comentarioid )
+                 response = RestClient::Request.new(
+                      :method => :post,
+                      :url => 'localhost:4000/email/enviarfirma',
+                      :payload => {comentario_id: comentarioid}
+                 ).execute
+          end
 
     end   
 end

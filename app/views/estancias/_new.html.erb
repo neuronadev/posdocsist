@@ -62,24 +62,29 @@
                         <%= fest.label :modalidad_id, "Modalidad:", class:"form-label fw-bold required-label" %>
                         <%= fest.select :modalidad_id, options_for_select(Modalidad.all.map { |item| [item.nommodal, item.id] }), {}, { class: 'form-control' } %>
                 </div> 
-                <div class="col-md-4">
-                        <%= fest.label :convenio_c, "Convenio de asignación de beca:", class:"form-label fw-bold required-label" %> <%= render 'help/conv_c' %>
-                        <%= fest.file_field :convenio_c, class:"form-control" %>
-                        <%= "<div class='msg_errors'>#{@persona.externo.estancias.first.errors[:convenio_c][0]}</div>".html_safe if !@persona.externo.estancias.first.errors[:convenio_c][0].blank? %>
-                </div>   
-                <div class="col-md-4">
-                        <%= fest.label :convenio_i, "Convenio de confidencialidad:", class:"form-label fw-bold required-label" %> <%= render 'help/conv_i' %>
-                        <%= fest.file_field :convenio_i, class:"form-control" %>
-                        <%= "<div class='msg_errors'>#{@persona.externo.estancias.first.errors[:convenio_i][0]}</div>".html_safe if !@persona.externo.estancias.first.errors[:convenio_i][0].blank? %> 
-                </div> 
 
-                <div class="col-md-4">
-                        <%= fest.label :proyecto_c, "Proyecto presentado ante la SECIHTI:", class:"form-label fw-bold required-label" %> <%= render 'help/proyecto_c' %>
-                        <%= fest.file_field :proyecto_c, class:"form-control" %>
-                        <%= "<div class='msg_errors'>#{@persona.externo.estancias.first.errors[:proyecto_c][0]}</div>".html_safe if !@persona.externo.estancias.first.errors[:proyecto_c][0].blank? %> 
-                </div> 
+                        <div class="col-md-4">
+                                <%= fest.label :convenio_c, "Convenio de asignación de beca:", class:"form-label fw-bold required-label" %> <%= render 'help/conv_c' %>
+                                <%= fest.file_field :convenio_c, class:"form-control" %>
+                                <%= "<div class='msg_errors'>#{@persona.externo.estancias.first.errors[:convenio_c][0]}</div>".html_safe if !@persona.externo.estancias.first.errors[:convenio_c][0].blank? %>
+                        </div>   
+                        <div class="col-md-4">
+                                <%= fest.label :anexo_c, "Anexo 1:", class:"form-label fw-bold required-label" %> <%= render 'help/anexo_c' %>
+                                <%= fest.file_field :anexo_c, class:"form-control" %>
+                                <%= "<div class='msg_errors'>#{@persona.externo.estancias.first.errors[:anexo_c][0]}</div>".html_safe if !@persona.externo.estancias.first.errors[:anexo_c][0].blank? %>
+                        </div>   
+                        <div class="col-md-4">
+                                <%= fest.label :convenio_i, "Convenio de confidencialidad:", class:"form-label fw-bold required-label" %> <%= render 'help/conv_i' %>
+                                <%= fest.file_field :convenio_i, class:"form-control" %>
+                                <%= "<div class='msg_errors'>#{@persona.externo.estancias.first.errors[:convenio_i][0]}</div>".html_safe if !@persona.externo.estancias.first.errors[:convenio_i][0].blank? %> 
+                        </div> 
+                        <div class="col-md-4">
+                                <%= fest.label :proyecto_c, "Proyecto presentado ante la SECIHTI:", class:"form-label fw-bold required-label" %> <%= render 'help/proyecto_c' %>
+                                <%= fest.file_field :proyecto_c, class:"form-control" %>
+                                <%= "<div class='msg_errors'>#{@persona.externo.estancias.first.errors[:proyecto_c][0]}</div>".html_safe if !@persona.externo.estancias.first.errors[:proyecto_c][0].blank? %> 
+                        </div> 
 
-                <div class="col-md-12">
+                <div class="col-md-8">
                         <%= fest.label :notas, "Notas:", class:"form-label fw-bold" %>
                         <%= fest.text_area :notas, class:"form-control" %>
                 </div> 

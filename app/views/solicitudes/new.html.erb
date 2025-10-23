@@ -21,7 +21,11 @@
                 </div>
                 <div class="col-md-12">
                     <%= f.label :comentario, "Comentarios:", class:"form-label" %>
-                    <%= f.rich_text_area :comentario, class:"form-control" %>
+                    <% if @tipo == 'P' %>
+                          <%= f.rich_text_area :comentario, class:"form-control", value:@txt_msg.html_safe %>
+                    <% else %>
+                          <%= f.rich_text_area :comentario, class:"form-control" %> 
+                    <% end %>      
                 </div>
                 
             

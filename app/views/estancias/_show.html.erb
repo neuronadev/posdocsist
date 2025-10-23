@@ -40,11 +40,7 @@
        <div class="ms-2"><%= @estancia.modalidad.nommodal %></div>
     </div>
 
-    <div class="col-4">
-       <div class="fw-bold">Notas:</div>
-       <div class="ms-2"><%= @estancia.notas %></div>
-    </div>
-
+    
     <div class="col-4">
        <div class="fw-bold">Convenio de asignación de beca:</div>
        <div class="ms-2">
@@ -53,7 +49,18 @@
            <% end %>
        </div>
     </div>
+
+    <div class="col-4">
+       <div class="fw-bold">Anexo 1:</div>
+       <div class="ms-2">
+         <% if  @estancia.anexo_c.attached?  %> 
+                <%= link_to "Ver archivo", rails_blob_path( @estancia.anexo_c, disposition: "attachment") %>  
+         <% end %>
+       </div>
+    </div>
+
 </div>    
+
 <div class="row p-3">
     <div class="col-4">
        <div class="fw-bold">Convenio de confidencialidad:</div>
@@ -64,7 +71,6 @@
        </div>
     </div>
 
-
     <div class="col-4">
        <div class="fw-bold">Proyecto presentado en la SECIHTI:</div>
        <div class="ms-2">
@@ -72,6 +78,11 @@
                 <%= link_to "Ver archivo", rails_blob_path( @estancia.proyecto_c, disposition: "attachment") %>  
          <% end %>
        </div>
+    </div>
+
+    <div class="col-8">
+       <div class="fw-bold">Notas:</div>
+       <div class="ms-2"><%= @estancia.notas %></div>
     </div>
 
 </div>

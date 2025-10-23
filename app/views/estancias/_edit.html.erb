@@ -53,10 +53,7 @@
                             <%= fest.label :modalidad_id, "Modalidad:", class:"form-label fw-bold" %>
                             <%= fest.select :modalidad_id, options_for_select(Modalidad.all.map { |item| [item.nommodal, item.id] }, fest.object.modalidad_id), {}, { class: 'form-control' } %>
                     </div> 
-                    <div class="col-md-4">
-                            <%= fest.label :notas, "Notas:", class:"form-label fw-bold" %>
-                            <%= fest.text_area :notas, class:"form-control" %>
-                    </div> 
+                    
                     <div class="col-md-4">
                             <%= fest.label :convenio_c, "Convenio de asignación de beca:", class:"form-label fw-bold" %>
                             <%= fest.file_field :convenio_c, class:"form-control" %>
@@ -65,7 +62,17 @@
                                         <%= link_to fest.object.convenio_c.filename, rails_blob_path( fest.object.convenio_c, disposition: "attachment") %>  
                                  <% end %>
                             </div>
+                    </div> 
+                    <div class="col-md-4">
+                            <%= fest.label :anexo_c, "Anexo 1:", class:"form-label fw-bold" %>
+                            <%= fest.file_field :anexo_c, class:"form-control" %>
+                            <div class="ms-2">
+                                 <% if  fest.object.anexo_c.attached?  %> 
+                                        <%= link_to fest.object.anexo_c.filename, rails_blob_path( fest.object.anexo_c, disposition: "attachment") %>  
+                                 <% end %>
+                            </div>
                     </div>   
+                    
                     <div class="col-md-4">
                             <%= fest.label :convenio_i, "Convenio de confidencialidad:", class:"form-label fw-bold" %>
                             <%= fest.file_field :convenio_i, class:"form-control" %>
@@ -83,6 +90,11 @@
                                         <%= link_to fest.object.proyecto_c.filename, rails_blob_path( fest.object.proyecto_c, disposition: "attachment") %>  
                                  <% end %>
                             </div>
+                    </div> 
+
+                    <div class="col-md-8">
+                            <%= fest.label :notas, "Notas:", class:"form-label fw-bold" %>
+                            <%= fest.text_area :notas, class:"form-control" %>
                     </div> 
 
                 <% end %>  

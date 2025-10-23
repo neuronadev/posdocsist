@@ -52,7 +52,7 @@ class PersonasController < ApplicationController
           :apaterno,
           :amaterno,
           :tipopersona_id,
-          :red_id, externo_attributes:[:id, :persona_id, :cvu, estancias_attributes:[:id, :titulo, :responsable, :finicio, :ftermino, :tematica, :notas, :modalidad_id, :tipoestancia_id, :estado, :convenio_c, :convenio_i, :proyecto_c]]
+          :red_id, externo_attributes:[:id, :persona_id, :cvu, estancias_attributes:[:id, :titulo, :responsable, :finicio, :ftermino, :tematica, :notas, :modalidad_id, :tipoestancia_id, :estado, :convenio_c, :convenio_i, :proyecto_c, :anexo_c]]
         )
     end
 
